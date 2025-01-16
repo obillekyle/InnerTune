@@ -39,13 +39,13 @@ jobs:
           distribution: "zulu"
           cache: 'gradle'
 
-      - name: Build unsigned release APK
-        run: ./gradlew assR assRU
+      - name: Build debug APK and run jvm tests
+        run: ./gradlew assembleFossDebug lintFossDebug testFossDebugUnitTest --stacktrace -DskipFormatKtlint
         env:
           PULL_REQUEST: 'true'
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: release
-          path: app/build/outputs/apk/full/release/*.apk
+          name: app-foss
+          path: app/build/outputs/apk/foss/debug/*.apk
