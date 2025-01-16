@@ -27,8 +27,7 @@ jobs:
         with:
           name: app
           path: app/build/outputs/apk/full/debug/*.apk
-
-  build-foss:
+  build-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
